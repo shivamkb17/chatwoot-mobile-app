@@ -3,7 +3,7 @@ import { useTheme } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { clearAllDeliveredNotifications } from 'helpers/PushHelper';
 import { useSelector, useDispatch } from 'react-redux';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, AppState } from 'react-native';
 import BottomSheetModal from 'components/BottomSheet/BottomSheet';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -34,13 +34,13 @@ import AnalyticsHelper from 'helpers/AnalyticsHelper';
 import { CONVERSATION_EVENTS } from 'constants/analyticsEvents';
 
 const ConversationScreen = () => {
+  const [appState, setAppState] = useState(AppState.currentState);
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
   const conversationStatus = useSelector(selectConversationStatus);
   const assigneeType = useSelector(selectAssigneeType);
   const activeInboxId = useSelector(selectActiveInbox);
-  // const installationUrl = useSelector(state => state.settings.installationUrl);
   const webSocketUrl = useSelector(state => state.settings.webSocketUrl);
   const isLoading = useSelector(state => state.conversations.loading);
   const inboxes = useSelector(state => state.inbox.data);
@@ -60,6 +60,23 @@ const ConversationScreen = () => {
     dispatch(getAllNotifications({ pageNo: 1 }));
     initAnalytics();
   }, [dispatch, initActionCable, initAnalytics]);
+
+  useEffect(() => {
+    const appStateListener = AppState.addEventListener('change', nextAppState => {
+      if (appState === 'background' && nextAppState === 'active') {
+        loadConversations({
+          page: pageNumber,
+          assignee: assigneeType,
+          status: conversationStatus,
+          inboxId: activeInboxId,
+        });
+      }
+      setAppState(nextAppState);
+    });
+    return () => {
+      appStateListener?.remove();
+    };
+  }, [appState, pageNumber, assigneeType, conversationStatus, activeInboxId, loadConversations]);
 
   const initAnalytics = useCallback(async () => {
     AnalyticsHelper.identify(user);
