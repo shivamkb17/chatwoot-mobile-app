@@ -9,17 +9,8 @@ workflows:
                 XCODE_SCHEME: "Chatwoot" # <-- Put the name of your Xcode scheme here
                 BUNDLE_ID: "com.etisalna.social" # <-- Put your Bundle Id here e.g com.domain.myapp
             node: 18.0
-            xcode: 12.5
+            xcode: 15.0
             cocoapods: 1.15.0
-        triggering:
-            events:
-                - push
-                - tag
-                - pull_request
-            branch_patterns:
-                - pattern: develop
-                  include: true
-                  source: true
         scripts:
             - name: Install npm dependencies
               script: |
