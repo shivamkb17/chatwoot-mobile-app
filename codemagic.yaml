@@ -8,7 +8,7 @@ workflows:
                 XCODE_WORKSPACE: "ios/Chatwoot.xcworkspace" # <-- Put the name of your Xcode workspace here
                 XCODE_SCHEME: "Chatwoot" # <-- Put the name of your Xcode scheme here
                 BUNDLE_ID: "com.etisalna.social" # <-- Put your Bundle Id here e.g com.domain.myapp
-            node: latest
+            node: 18.0
             xcode: 12.5
             cocoapods: default
         triggering:
