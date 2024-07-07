@@ -2,7 +2,7 @@ workflows:
      react-native-ios:
         name: React Native iOS
         max_build_duration: 120
-        instance_type: mac_mini
+        instance_type: mac_mini_m1
         environment:
             vars:
                 XCODE_WORKSPACE: "ios/Chatwoot.xcworkspace" # <-- Put the name of your Xcode workspace here
