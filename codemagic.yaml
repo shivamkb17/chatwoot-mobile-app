@@ -57,6 +57,5 @@ workflows:
             - /tmp/xcodebuild_logs/*.log
             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-        publishing:
-          # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
-          app_store_connect:                 
+           
+        
