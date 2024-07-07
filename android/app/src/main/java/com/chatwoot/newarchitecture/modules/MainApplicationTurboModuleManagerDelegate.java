@@ -1,4 +1,4 @@
-package com.chatwoot.app.newarchitecture.modules;
+package com.etisalna.social.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

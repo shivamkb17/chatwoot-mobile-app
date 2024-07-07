@@ -28,7 +28,7 @@ platform :ios do
     )
     update_project_provisioning( # Set the project provisioning profile (related in Xcode to the General > Signing Release section)
       xcodeproj: "Chatwoot.xcodeproj",
-      target_filter: "Chatwoot", # Name of your project
+      target_filter: "Etisalna", # Name of your project
       profile: "./builds/provisioning.mobileprovision",
       build_configuration: "Release"
     )
@@ -37,7 +37,7 @@ platform :ios do
     )
     build_app(
       workspace: "Chatwoot.xcworkspace", 
-      scheme: "Chatwoot",
+      scheme: "Etisalna",
       clean: true,
       export_method: "app-store",
       export_options: {

@@ -1,4 +1,4 @@
-package com.chatwoot.app;
+package com.etisalna.social;
 
 import android.os.Bundle;
 
