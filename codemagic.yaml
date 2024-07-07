@@ -4,7 +4,6 @@ workflows:
         max_build_duration: 120
         instance_type: mac_mini
         environment:
-            groups:
             vars:
                 XCODE_WORKSPACE: "ios/Chatwoot.xcworkspace" # <-- Put the name of your Xcode workspace here
                 XCODE_SCHEME: "Chatwoot" # <-- Put the name of your Xcode scheme here
