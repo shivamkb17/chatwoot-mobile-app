@@ -11,7 +11,7 @@ workflows:
             node: 18.0
             xcode: 15.0
             cocoapods: 1.14.3
-            ruby: 2.7.3
+            ruby: 3.0.0
         scripts:
             - name: Install npm dependencies
               script: |
